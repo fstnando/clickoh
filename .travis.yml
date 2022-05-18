@@ -7,6 +7,9 @@ python:
     - 3.9
 services:
     - postgresql
+before_install:
+  - export DJ_DEBUG=False
+  - export DATABASE_URL=postgres://postgres@localhost/travisdb
 before_script:
     - psql -c "CREATE DATABASE travisdb;" -U postgres
     - python manage.py migrate --noinput
