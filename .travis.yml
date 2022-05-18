@@ -1,4 +1,5 @@
 env:
+  - DB=postgres
   - DJ_DEBUG=False
   - DATABASE_URL=postgres://postgres@localhost/travisdb
 language: python
