@@ -6,6 +6,9 @@
 
 Demo in: https://clickoh.herokuapp.com/api/
 
+        user: admin
+        password: admin4598
+
 Swagger => https://clickoh.herokuapp.com/swagger/
 
 Token Simple JWT => https://clickoh.herokuapp.com/api/token/
