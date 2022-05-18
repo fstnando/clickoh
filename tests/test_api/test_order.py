@@ -67,10 +67,10 @@ class OrderTestCase(TestSetUp):
         Metodo para controlar la actualización de una orden
         """
         self.test_create_order()
-        order = Order.objects.get(id=1)
+        order = Order.objects.all()[0]
         cantidad = self.products[0].stock
         response = self.client.put(
-            '/api/orders/1/',
+            '/api/orders/{}/'.format(order.id),
             {
                 'date_time': '2022-01-01T10:00:00-03:00',
                 'details': [
@@ -93,11 +93,11 @@ class OrderTestCase(TestSetUp):
         producto en uno de los detalles
         """
         self.test_create_order()
-        order = Order.objects.get(id=1)
+        order = Order.objects.all()[0]
         cantidad1 = self.products[0].stock
         cantidad2 = self.products[1].stock
         response = self.client.put(
-            '/api/orders/1/',
+            '/api/orders/{}/'.format(order.id),
             {
                 'date_time': '2022-01-01T10:00:00-03:00',
                 'details': [
@@ -121,8 +121,9 @@ class OrderTestCase(TestSetUp):
         Metodo para controlar la eliminación de una orden
         """
         self.test_create_order()
+        order = Order.objects.all()[0]
         response = self.client.delete(
-            '/api/orders/1/',
+            '/api/orders/{}/'.format(order.id),
             {},
             format='json'
         )
@@ -133,10 +134,10 @@ class OrderTestCase(TestSetUp):
         Metodo para controlar la acción get_total de ordenes
         """
         self.test_create_order()
-        order = Order.objects.get(id=1)
+        order = Order.objects.all()[0]
         total = round(self.products[0].price * 10, 2)
         response = self.client.get(
-            '/api/orders/1/get_total/',
+            '/api/orders/{}/get_total/'.format(order.id),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -147,10 +148,10 @@ class OrderTestCase(TestSetUp):
         Metodo para controlar la acción get_total_usd de ordenes
         """
         self.test_create_order()
-        order = Order.objects.get(id=1)
+        order = Order.objects.all()[0]
         total = round(self.products[0].price * 10, 2)
         response = self.client.get(
-            '/api/orders/1/get_total_usd/',
+            '/api/orders/{}/get_total_usd/'.format(order.id),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
