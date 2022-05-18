@@ -1,0 +1,15 @@
+language: python
+python:
+    - 3.10.4
+services:
+    - postgresql
+install:
+    - pip install -r requirements.txt
+script:
+    - python manage.py test
+deploy:
+    provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: clickoh
+    run: python manage.py migrate
+    on: master
