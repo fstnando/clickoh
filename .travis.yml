@@ -2,6 +2,8 @@ env:
   - DB=postgres
   - DJ_DEBUG=False
   - DATABASE_URL=postgres://postgres@localhost/travisdb
+addons:
+  postgresql: "10"  
 language: python
 python:
     - 3.9
