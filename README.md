@@ -12,6 +12,4 @@ Token Simple JWT => https://clickoh.herokuapp.com/api/token/
 
 # Testing:
 
-'''
-python manage.py test -v 2
-'''
+    python manage.py test -v 2
