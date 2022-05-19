@@ -165,5 +165,5 @@ else:
     os.makedirs(STATIC_ROOT, exist_ok=True)
     os.makedirs(STATIC_TMP, exist_ok=True)
 
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-    #DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    #DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
