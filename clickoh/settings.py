@@ -166,8 +166,8 @@ else:
         os.path.join(BASE_DIR, 'static'),
     )
 
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    #STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+    #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
     #STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
     os.makedirs(STATIC_ROOT, exist_ok=True)
