@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-import dj_database_url
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -153,6 +151,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
+    import dj_database_url
+    from decouple import config
+    import django_heroku
+
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
     #ALLOWED_HOSTS = ['*']
 
