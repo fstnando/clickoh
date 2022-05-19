@@ -1,4 +1,4 @@
-# API rest endpoints for ClickOH
+# API rest endpoints for ClicOH
 
 [![Build Status](https://app.travis-ci.com/fstnando/clickoh.svg?branch=main)](https://app.travis-ci.com/fstnando/clickoh)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
