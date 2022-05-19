@@ -13,6 +13,7 @@ services:
 before_install:
   - export DJ_DEBUG=False
   - export DATABASE_URL=postgres://postgres@localhost/travisdb
+  - export SECRET_KEY=sfgusfgusfigu84275wiguirfg8b2304
 before_script:
     - psql -c "CREATE DATABASE travisdb;" -U postgres
     - python manage.py migrate --noinput
