@@ -22,13 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5una&750%7i()+^fjf4ul%wka=mjj=&!jsk81%c^t!@zb8iar0'
+#SECRET_KEY = 'django-insecure-5una&750%7i()+^fjf4ul%wka=mjj=&!jsk81%c^t!@zb8iar0'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ['DJ_DEBUG'] == 'True')
-
-ALLOWED_HOSTS = ['*']
-
+#DEBUG = True
 
 # Application definition
 
@@ -88,27 +87,12 @@ WSGI_APPLICATION = 'clickoh.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {}
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_HOST'],
-        'PORT': os.environ['DATABASE_PORT'],
-    }
-}
-'''
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -146,11 +130,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_TMP = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -167,9 +146,24 @@ REST_FRAMEWORK = {
     )
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-os.makedirs(STATIC_ROOT, exist_ok=True)
-os.makedirs(STATIC_TMP, exist_ok=True)
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '*.herokuapp.com']
+
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_TMP = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
+
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+    os.makedirs(STATIC_ROOT, exist_ok=True)
+    os.makedirs(STATIC_TMP, exist_ok=True)
+
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+    #DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
