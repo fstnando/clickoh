@@ -209,3 +209,4 @@ else:
             },
         }
     }
+    django_heroku.settings(locals())
