@@ -150,6 +150,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.DefaultResultsSetPagination',
     'DATE_FORMAT': "%Y-%m-%d",
     'TIME_FORMAT': "%H:%M:%S",
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
