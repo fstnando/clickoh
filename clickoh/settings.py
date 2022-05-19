@@ -153,7 +153,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '*.herokuapp.com']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
     #ALLOWED_HOSTS = ['*']
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
