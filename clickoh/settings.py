@@ -164,8 +164,8 @@ else:
         os.path.join(BASE_DIR, 'static'),
     )
 
-    #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    #STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
     os.makedirs(STATIC_ROOT, exist_ok=True)
     os.makedirs(STATIC_TMP, exist_ok=True)
