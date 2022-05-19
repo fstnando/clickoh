@@ -153,7 +153,7 @@ if DEBUG:
 else:
     import dj_database_url
     from decouple import config
-    import django_heroku
+    #import django_heroku
 
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
     #ALLOWED_HOSTS = ['*']
@@ -213,4 +213,4 @@ else:
         }
     }
 
-    django_heroku.settings(locals())
+    #django_heroku.settings(locals())
