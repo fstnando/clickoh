@@ -2,8 +2,9 @@ env:
   - DB=postgres
   - DJ_DEBUG=False
   - DATABASE_URL=postgres://postgres@localhost/travisdb
+  - SECRET_KEY=sfgusfgusfigu84275wiguirfg8b2304
 addons:
-  postgresql: "10"  
+  postgresql: "10"
 language: python
 python:
     - 3.9
