@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,7 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'clickoh.urls'
@@ -151,6 +151,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
     import dj_database_url
     from decouple import config
     #import django_heroku
@@ -164,9 +166,9 @@ else:
         os.path.join(BASE_DIR, 'static'),
     )
 
-    #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
     #STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage' 
+    #STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
     os.makedirs(STATIC_ROOT, exist_ok=True)
     os.makedirs(STATIC_TMP, exist_ok=True)
