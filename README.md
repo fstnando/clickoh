@@ -7,12 +7,20 @@
 
 Demo in: https://clickoh.herokuapp.com/api/
 
-        user: admin
-        password: admin4598
-
 Swagger => https://clickoh.herokuapp.com/swagger/
 
 Token Simple JWT => https://clickoh.herokuapp.com/api/token/
+
+        user: admin
+        password: admin4598
+
+## PythonAnyWhere
+
+Demo in: http://fstnando77.pythonanywhere.com/api/
+
+Swagger => http://fstnando77.pythonanywhere.com/swagger/
+
+Token Simple JWT => http://fstnando77.pythonanywhere.com/api/token/
 
 ## Testing:
 
