@@ -25,6 +25,10 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
     permission_classes = [permissions.DjangoModelPermissions]
 
+    def perform_destroy(self, instance):
+        instance.reset_stock()
+        instance.delete()
+
     @action(detail=True, methods=['get'])
     def get_total(self, request, pk=None):
         """
