@@ -50,22 +50,31 @@ class OrderSerializer(DefaultModelSerializer):
         """
         data = self._kwargs['data']
 
-        instance.reset_stock()
-
         instance.date_time = data.get('date_time')
         instance.save()
 
+        products = {}
+        for el in instance.orderdetail_set.all():
+            p = el.product
+            p.stock += el.cuantity
+            products[p.id] = p
+
         ids = set()
         for el in data.get('details'):
-            el['product'] = Product.objects.get(id=el['product'])
+            p = Product.objects.get(id=el['product'])
+            el['product'] = p
             el['order'] = instance
             od = OrderDetail(**el)
             od.save()
             ids.add(od.id)
+            if p.id not in products:
+                products[p.id] = p
+            products[p.id].stock -= od.cuantity
 
         instance.orderdetail_set.exclude(id__in=ids).delete()
 
-        instance.update_stock()
+        for p in products.values():
+            p.save()
 
         return instance
 
