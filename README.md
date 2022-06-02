@@ -2,6 +2,7 @@
 
 [![Build Status](https://app.travis-ci.com/fstnando/clickoh.svg?branch=main)](https://app.travis-ci.com/fstnando/clickoh)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/fstnando/clickoh?style=plastic)
 
 ## Heroku
 
